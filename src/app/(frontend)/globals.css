@@ -222,3 +222,57 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.leftOverlayScene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.leftOverlayPanel {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--background);
+  animation: leftOverlayIn 0.85s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+.leftOverlayPanel.isClosing {
+  animation: leftOverlayOut 0.85s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes leftOverlayIn {
+  from {
+    transform: translateY(100vh);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes leftOverlayOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.backHomeButton {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  background: transparent;
+  border: 0;
+  color: currentColor;
+  font: inherit;
+  cursor: pointer;
+}

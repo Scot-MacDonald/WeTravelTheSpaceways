@@ -1,0 +1,128 @@
+.homePage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+#contact {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  font-size: 20px;
+  line-height: 1.05;
+  color: #000;
+}
+
+#contact a {
+  color: #000;
+  text-decoration: none;
+}
+
+.word {
+  position: absolute;
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.up {
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 155px;
+}
+
+.right {
+  top: 50%;
+  left: 10px;
+  font-size: 150px;
+  animation: floatLeft 2s ease-in-out infinite;
+}
+
+@keyframes floatLeft {
+  0% {
+    transform: translate(-2px, -50%);
+  }
+
+  50% {
+    transform: translate(4px, -60%);
+  }
+
+  100% {
+    transform: translate(-2px, -50%);
+  }
+}
+
+.front {
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150px;
+}
+
+.left {
+  top: 50%;
+  right: 10px;
+  transform-origin: center;
+  font-size: 150px;
+  will-change: transform;
+}
+
+.down {
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 150px;
+}
+
+.draggable {
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.dragHint {
+  position: absolute;
+  top: calc(50% - 120px);
+  right: 24px;
+  z-index: 20;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000;
+  animation: hintPulse 1.4s ease-in-out infinite;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.dragHint.hidden {
+  opacity: 0;
+}
+
+@keyframes hintPulse {
+  0% {
+    opacity: 0.25;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-8px);
+  }
+
+  100% {
+    opacity: 0.25;
+    transform: translateX(0);
+  }
+}
