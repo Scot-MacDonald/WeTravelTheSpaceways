@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 type Props = {
@@ -11,30 +11,11 @@ type Props = {
 export function HomeScene({ interactive = true, initialRotation }: Props) {
   const router = useRouter()
 
-const [rotation, setRotation] = useState(0)
-
-useEffect(() => {
-  setRotation(initialRotation ?? (interactive ? 180 : 0))
-}, [interactive, initialRotation])  
-
-const [hasDragged, setHasDragged] = useState(false)
+  const [rotation, setRotation] = useState(initialRotation ?? (interactive ? 180 : 0))
+  const [hasDragged, setHasDragged] = useState(false)
 
   const lastX = useRef(0)
   const animationFrame = useRef<number | null>(null)
-
-  useEffect(() => {
-    if (!interactive && typeof initialRotation === 'number') {
-      setRotation(initialRotation)
-    }
-  }, [interactive, initialRotation])
-
-  useEffect(() => {
-    return () => {
-      if (animationFrame.current) {
-        cancelAnimationFrame(animationFrame.current)
-      }
-    }
-  }, [])
 
   function clamp(value: number) {
     return Math.max(0, Math.min(180, value))
@@ -90,7 +71,6 @@ const [hasDragged, setHasDragged] = useState(false)
         }
       }
     }
-
 
     if (animationFrame.current) {
       cancelAnimationFrame(animationFrame.current)
